@@ -47,6 +47,19 @@ def get_product_names(position_dict):
     return names
 
 
+def validate_user_input(products_available, user_input):
+    """
+    Validate user input
+    :param products_available:
+    :param user_input:
+    :return: is_product - confirming if product exist or not
+    """
+    product_dict = get_dict_of_ordered_products(products_available)
+    is_product = user_input in product_dict.keys()
+
+    return is_product
+
+
 def process_user_deposit(current_product, input_coin_message, user_count):
     """
     Process coins input
@@ -80,19 +93,6 @@ def process_user_deposit(current_product, input_coin_message, user_count):
     user = User(user_count, user_deposit, current_product.name)
 
     return user
-
-
-def validate_user_input(products_available, user_input):
-    """
-    Validate user input
-    :param products_available:
-    :param user_input:
-    :return: is_product - confirming if product exist or not
-    """
-    product_dict = get_dict_of_ordered_products(products_available)
-    is_product = user_input in product_dict.keys()
-
-    return is_product
 
 
 def process_coin_input(validated_product, products, users, user_input, user_count):
